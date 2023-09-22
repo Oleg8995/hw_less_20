@@ -1,4 +1,4 @@
-// *********************************** LESS 20 ******************************************
+// *********************************** LESS 20 ********************************************
 
 // # 1 Create arr method 
 
@@ -7,7 +7,7 @@ const obj = {
   to: 17,
 };
 
-const createArr = () => {
+function createArr() {
 
   let res = [];
 
@@ -20,62 +20,16 @@ const createArr = () => {
 
 };
 
-createArr();
+obj.createArr = createArr;
+obj.createArr();
 
-console.log(obj.arr)
-
-obj.arr;
-[1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-// ****************** VAR 2 .bind() ******************
-
-const obj = {
-  from: 8,
-  to: 17,
-};
-
-const createArr = function () {
-
-  let res = [];
-
-  for( let i = this.from; i < this.to; i++ ) {
-
-    res.push(i);
-  }
-
-  return this.arr = res;
-
-};
-
-const bindCreateArr = createArr.bind(obj);
-
-bindCreateArr();
-
-console.log(obj.arr);
-
-// ****************** VAR 3 .call() ******************
-
-const obj = {
-  from: 7,
-  to: 23,
-};
-
-const createArr = function () {
-
-  let res = [];
-
-  for( let i = this.from; i < this.to; i++ ) {
-
-    res.push(i);
-  }
-
-  return this.arr = res;
-
-};
+const createArrBind = createArr.bind(obj);
+createArrBind();
 
 createArr.call(obj);
+createArr.apply(obj);
 
-console.log(obj.arr);
+console.log(obj);
 
 // ===============================================================================================================
 
@@ -108,7 +62,7 @@ calculator.sum(6).mul(2).div(4);
 
 console.log(calculator.result);
 
-// =================================================================================================================
+// ===============================================================================================================
 
 // # 3 Constructor Function
 
@@ -131,7 +85,7 @@ function Car(model, color, age, speed, gasTank, started) {
       return this;
     },
 
-    Drive: function () {
+    drive: function () {
 
       if ( this.started && this.gasTank !== 0 ) {
         this.speed = 30;
@@ -140,7 +94,7 @@ function Car(model, color, age, speed, gasTank, started) {
 
     },
 
-    Stop: function () {
+    stop: function () {
 
       this.started = false;
       this.speed = 0;
@@ -148,7 +102,7 @@ function Car(model, color, age, speed, gasTank, started) {
 
     },
 
-    SpeedUp: function (arg) {
+    speedUp: function (arg) {
 
       if ( this.speed > 0 && this.speed <= 200 ) {
 
@@ -161,7 +115,7 @@ function Car(model, color, age, speed, gasTank, started) {
 
     },
 
-    SlowDown: function (arg) {
+    slowDown: function (arg) {
 
       if ( this.speed > 0 && this.speed <= 200 ) {
 
@@ -174,7 +128,7 @@ function Car(model, color, age, speed, gasTank, started) {
       return this;
     },
 
-    AddGas: function (gas) {
+    addGas: function (gas) {
 
       if ( this.gasTank > 0 && this.gasTank <= 20 ) {
 
